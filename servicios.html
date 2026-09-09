@@ -69,22 +69,42 @@
   }
 
   /* ── Hero ── */
-  .hero{background:linear-gradient(180deg,var(--off) 0%,#fff 100%);padding:56px 0 72px;}
+  .hero{position:relative;background:var(--navy);padding:56px 0 72px;overflow:hidden;color:#fff;}
+  .hero-photo{position:absolute;inset:0;z-index:0;
+    background:
+      linear-gradient(100deg, var(--navy) 0%, var(--navy) 30%, rgba(11,31,58,.55) 55%, rgba(11,31,58,.25) 100%),
+      repeating-linear-gradient(135deg, rgba(255,255,255,.05) 0px, rgba(255,255,255,.05) 2px, transparent 2px, transparent 26px),
+      linear-gradient(150deg,#2a4a78 0%,#12233F 70%);
+    opacity:.9;
+  }
+  @media (min-width:960px){
+    .hero-photo{left:38%;
+      background:
+        linear-gradient(90deg, var(--navy) 0%, rgba(11,31,58,.65) 25%, rgba(11,31,58,.15) 60%, rgba(11,31,58,0) 100%),
+        repeating-linear-gradient(135deg, rgba(255,255,255,.06) 0px, rgba(255,255,255,.06) 2px, transparent 2px, transparent 26px),
+        linear-gradient(150deg,#2a4a78 0%,#12233F 70%);
+      opacity:1;
+    }
+  }
+  .hero-photo-label{position:absolute;z-index:1;right:24px;bottom:14px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:10.5px;letter-spacing:.02em;color:rgba(255,255,255,.4);text-align:right;max-width:280px;}
+  .hero .container{position:relative;z-index:2;}
+  .hero-coords{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:16px;}
   .hero-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:44px;align-items:start;}
   .hero-grid > *{min-width:0;}
   @media (min-width:960px){
     .hero-grid{grid-template-columns:1.15fr .95fr;gap:56px;}
   }
-  .hero-badge{display:inline-block;background:#fff;border:1px solid var(--navy);color:var(--navy);font-size:12px;font-weight:700;letter-spacing:.04em;padding:7px 14px;border-radius:6px;margin-bottom:20px;}
-  .hero h1{font-size:36px;font-weight:800;line-height:1.15;letter-spacing:-.01em;color:var(--navy);margin-bottom:18px;}
+  .hero-badge{display:inline-block;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.35);color:#fff;font-size:12px;font-weight:700;letter-spacing:.04em;padding:7px 14px;border-radius:6px;margin-bottom:20px;}
+  .hero h1{font-size:36px;font-weight:800;line-height:1.15;letter-spacing:-.01em;color:#fff;margin-bottom:18px;}
   @media (min-width:640px){ .hero h1{font-size:46px;} }
-  .hero-sub{font-size:16.5px;color:var(--tx2);line-height:1.6;max-width:560px;margin-bottom:26px;}
+  .hero-sub{font-size:16.5px;color:rgba(255,255,255,.75);line-height:1.6;max-width:560px;margin-bottom:26px;}
   .hero-checks{display:flex;flex-direction:column;gap:13px;margin-bottom:8px;}
-  .hero-check{display:flex;align-items:flex-start;gap:10px;font-size:14.5px;color:var(--navy);font-weight:500;}
-  .hero-check svg{width:20px;height:20px;flex-shrink:0;color:var(--navy);margin-top:1px;}
+  .hero-check{display:flex;align-items:center;gap:10px;font-size:14.5px;color:#fff;font-weight:500;}
+  .hero-check-icon{display:flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--blue);flex-shrink:0;}
+  .hero-check-icon svg{width:13px;height:13px;color:#fff;}
 
   /* ── Card / mini form ── */
-  .quote-card{background:#fff;border:1px solid var(--g1);border-radius:6px;box-shadow:0 4px 16px rgba(11,31,58,.08);padding:28px 26px;}
+  .quote-card{background:#fff;border:1px solid var(--g1);border-top:4px solid var(--blue);border-radius:6px;box-shadow:0 24px 60px rgba(0,0,0,.35);padding:28px 26px;}
   .quote-card-title{font-size:19px;font-weight:700;color:var(--navy);margin-bottom:4px;}
   .quote-card-sub{font-size:13px;color:var(--tx3);margin-bottom:20px;}
   .fg{margin-bottom:14px;}
@@ -111,6 +131,9 @@
   .servicio-card h3{font-size:19px;font-weight:700;color:var(--navy);}
   .servicio-card p{font-size:14px;color:var(--tx2);line-height:1.6;flex:1;}
   .servicio-card .btn{margin-top:4px;}
+  .servicio-link{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:700;color:var(--navy);text-decoration:none;margin-top:4px;}
+  .servicio-link svg{width:16px;height:16px;color:var(--wa);flex-shrink:0;}
+  .servicio-link:hover{color:var(--blue);}
 
   /* ── Por qué ROMSA ── */
   .porque-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:32px;}
@@ -128,6 +151,12 @@
   .galeria-item{border-radius:6px;overflow:hidden;border:1px solid var(--g1);background:#fff;}
   .galeria-placeholder{aspect-ratio:4/3;background:#D9DEE7;color:#5A6880;display:flex;align-items:center;justify-content:center;text-align:center;font-size:13px;font-weight:600;padding:16px;line-height:1.5;}
   .galeria-caption{padding:12px 14px;font-size:13px;font-weight:600;color:var(--navy);}
+  .proyectos-marquee-wrap{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);}
+  .proyectos-marquee-track{display:flex;gap:20px;width:max-content;animation:proyectos-marquee 32s linear infinite;}
+  .proyectos-marquee-wrap:hover .proyectos-marquee-track{animation-play-state:paused;}
+  .proyectos-marquee-track .galeria-item{width:300px;flex-shrink:0;}
+  @keyframes proyectos-marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+  @media (prefers-reduced-motion:reduce){ .proyectos-marquee-track{animation:none;} }
 
   /* ── CTA final ── */
   .cta-final{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-2) 60%,#1C3A63 100%);color:#fff;text-align:center;}
@@ -210,59 +239,52 @@
       <div class="servicio-card">
         <h3>Epóxico</h3>
         <p>Recubrimiento de alto tráfico y fácil limpieza para almacenes, líneas de ensamblaje y áreas de proceso. Resistente a golpes, derrames y tránsito de montacargas.</p>
-        <a class="btn btn-wa" href="https://wa.me/526861383117?text=Hola%2C%20me%20interesa%20cotizar%20el%20servicio%20de%20Ep%C3%B3xico." target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px;"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.03c-.24.68-1.4 1.31-1.93 1.34-.5.03-.98.22-3.3-.69-2.79-1.1-4.58-3.94-4.72-4.13-.14-.19-1.12-1.49-1.12-2.84s.71-2.02.96-2.3c.24-.27.53-.34.71-.34l.5.01c.16.01.38-.06.6.45.24.56.8 1.94.87 2.08.07.14.11.3.02.49-.09.19-.14.3-.27.46-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.27.14.43.12.59-.07.16-.19.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.26.13.43.19.5.3.07.11.07.63-.17 1.31Z"/></svg>
-          Cotizar por WhatsApp
-        </a>
+        <a class="servicio-link" href="https://wa.me/526861383117?text=Hola%2C%20me%20interesa%20cotizar%20el%20servicio%20de%20Ep%C3%B3xico." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.03c-.24.68-1.4 1.31-1.93 1.34-.5.03-.98.22-3.3-.69-2.79-1.1-4.58-3.94-4.72-4.13-.14-.19-1.12-1.49-1.12-2.84s.71-2.02.96-2.3c.24-.27.53-.34.71-.34l.5.01c.16.01.38-.06.6.45.24.56.8 1.94.87 2.08.07.14.11.3.02.49-.09.19-.14.3-.27.46-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.27.14.43.12.59-.07.16-.19.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.26.13.43.19.5.3.07.11.07.63-.17 1.31Z"/></svg>Cotizar este servicio →</a>
       </div>
       <div class="servicio-card">
         <h3>Poliuretano</h3>
         <p>Acabado flexible y resistente a la abrasión, ideal para áreas con vibración, cambios de temperatura o exposición a químicos agresivos.</p>
-        <a class="btn btn-wa" href="https://wa.me/526861383117?text=Hola%2C%20me%20interesa%20cotizar%20el%20servicio%20de%20Poliuretano." target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px;"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.03c-.24.68-1.4 1.31-1.93 1.34-.5.03-.98.22-3.3-.69-2.79-1.1-4.58-3.94-4.72-4.13-.14-.19-1.12-1.49-1.12-2.84s.71-2.02.96-2.3c.24-.27.53-.34.71-.34l.5.01c.16.01.38-.06.6.45.24.56.8 1.94.87 2.08.07.14.11.3.02.49-.09.19-.14.3-.27.46-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.27.14.43.12.59-.07.16-.19.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.26.13.43.19.5.3.07.11.07.63-.17 1.31Z"/></svg>
-          Cotizar por WhatsApp
-        </a>
+        <a class="servicio-link" href="https://wa.me/526861383117?text=Hola%2C%20me%20interesa%20cotizar%20el%20servicio%20de%20Poliuretano." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.03c-.24.68-1.4 1.31-1.93 1.34-.5.03-.98.22-3.3-.69-2.79-1.1-4.58-3.94-4.72-4.13-.14-.19-1.12-1.49-1.12-2.84s.71-2.02.96-2.3c.24-.27.53-.34.71-.34l.5.01c.16.01.38-.06.6.45.24.56.8 1.94.87 2.08.07.14.11.3.02.49-.09.19-.14.3-.27.46-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.27.14.43.12.59-.07.16-.19.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.26.13.43.19.5.3.07.11.07.63-.17 1.31Z"/></svg>Cotizar este servicio →</a>
       </div>
       <div class="servicio-card">
         <h3>Pulido de Pisos</h3>
         <p>Pulido y densificado de concreto para un acabado duradero, de bajo mantenimiento y con mejor reflectividad en planta.</p>
-        <a class="btn btn-wa" href="https://wa.me/526861383117?text=Hola%2C%20me%20interesa%20cotizar%20el%20servicio%20de%20Pulido%20de%20Pisos." target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px;"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.03c-.24.68-1.4 1.31-1.93 1.34-.5.03-.98.22-3.3-.69-2.79-1.1-4.58-3.94-4.72-4.13-.14-.19-1.12-1.49-1.12-2.84s.71-2.02.96-2.3c.24-.27.53-.34.71-.34l.5.01c.16.01.38-.06.6.45.24.56.8 1.94.87 2.08.07.14.11.3.02.49-.09.19-.14.3-.27.46-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.27.14.43.12.59-.07.16-.19.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.26.13.43.19.5.3.07.11.07.63-.17 1.31Z"/></svg>
-          Cotizar por WhatsApp
-        </a>
+        <a class="servicio-link" href="https://wa.me/526861383117?text=Hola%2C%20me%20interesa%20cotizar%20el%20servicio%20de%20Pulido%20de%20Pisos." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.03c-.24.68-1.4 1.31-1.93 1.34-.5.03-.98.22-3.3-.69-2.79-1.1-4.58-3.94-4.72-4.13-.14-.19-1.12-1.49-1.12-2.84s.71-2.02.96-2.3c.24-.27.53-.34.71-.34l.5.01c.16.01.38-.06.6.45.24.56.8 1.94.87 2.08.07.14.11.3.02.49-.09.19-.14.3-.27.46-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.27.14.43.12.59-.07.16-.19.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.26.13.43.19.5.3.07.11.07.63-.17 1.31Z"/></svg>Cotizar este servicio →</a>
       </div>
       <div class="servicio-card">
         <h3>Uretano Cementicio</h3>
         <p>Máxima resistencia térmica y química — ideal para cuartos fríos, áreas de lavado y zonas con choques térmicos frecuentes.</p>
-        <a class="btn btn-wa" href="https://wa.me/526861383117?text=Hola%2C%20me%20interesa%20cotizar%20el%20servicio%20de%20Uretano%20Cementicio." target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px;"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.03c-.24.68-1.4 1.31-1.93 1.34-.5.03-.98.22-3.3-.69-2.79-1.1-4.58-3.94-4.72-4.13-.14-.19-1.12-1.49-1.12-2.84s.71-2.02.96-2.3c.24-.27.53-.34.71-.34l.5.01c.16.01.38-.06.6.45.24.56.8 1.94.87 2.08.07.14.11.3.02.49-.09.19-.14.3-.27.46-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.27.14.43.12.59-.07.16-.19.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.26.13.43.19.5.3.07.11.07.63-.17 1.31Z"/></svg>
-          Cotizar por WhatsApp
-        </a>
+        <a class="servicio-link" href="https://wa.me/526861383117?text=Hola%2C%20me%20interesa%20cotizar%20el%20servicio%20de%20Uretano%20Cementicio." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.03c-.24.68-1.4 1.31-1.93 1.34-.5.03-.98.22-3.3-.69-2.79-1.1-4.58-3.94-4.72-4.13-.14-.19-1.12-1.49-1.12-2.84s.71-2.02.96-2.3c.24-.27.53-.34.71-.34l.5.01c.16.01.38-.06.6.45.24.56.8 1.94.87 2.08.07.14.11.3.02.49-.09.19-.14.3-.27.46-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.27.14.43.12.59-.07.16-.19.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.26.13.43.19.5.3.07.11.07.63-.17 1.31Z"/></svg>Cotizar este servicio →</a>
       </div>
       <div class="servicio-card">
         <h3>Sello de Juntas</h3>
         <p>Sellado de juntas de dilatación y control para evitar el desprendimiento del piso y proteger contra el paso de humedad y suciedad.</p>
-        <a class="btn btn-wa" href="https://wa.me/526861383117?text=Hola%2C%20me%20interesa%20cotizar%20el%20servicio%20de%20Sello%20de%20Juntas." target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px;"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.03c-.24.68-1.4 1.31-1.93 1.34-.5.03-.98.22-3.3-.69-2.79-1.1-4.58-3.94-4.72-4.13-.14-.19-1.12-1.49-1.12-2.84s.71-2.02.96-2.3c.24-.27.53-.34.71-.34l.5.01c.16.01.38-.06.6.45.24.56.8 1.94.87 2.08.07.14.11.3.02.49-.09.19-.14.3-.27.46-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.27.14.43.12.59-.07.16-.19.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.26.13.43.19.5.3.07.11.07.63-.17 1.31Z"/></svg>
-          Cotizar por WhatsApp
-        </a>
+        <a class="servicio-link" href="https://wa.me/526861383117?text=Hola%2C%20me%20interesa%20cotizar%20el%20servicio%20de%20Sello%20de%20Juntas." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.03c-.24.68-1.4 1.31-1.93 1.34-.5.03-.98.22-3.3-.69-2.79-1.1-4.58-3.94-4.72-4.13-.14-.19-1.12-1.49-1.12-2.84s.71-2.02.96-2.3c.24-.27.53-.34.71-.34l.5.01c.16.01.38-.06.6.45.24.56.8 1.94.87 2.08.07.14.11.3.02.49-.09.19-.14.3-.27.46-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.27.14.43.12.59-.07.16-.19.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.26.13.43.19.5.3.07.11.07.63-.17 1.31Z"/></svg>Cotizar este servicio →</a>
       </div>
       <div class="servicio-card">
         <h3>Reparaciones de Concreto</h3>
         <p>Reparación de grietas, desniveles y áreas dañadas antes de aplicar cualquier recubrimiento, para asegurar una base sólida y duradera.</p>
-        <a class="btn btn-wa" href="https://wa.me/526861383117?text=Hola%2C%20me%20interesa%20cotizar%20el%20servicio%20de%20Reparaciones%20de%20Concreto." target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px;"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.03c-.24.68-1.4 1.31-1.93 1.34-.5.03-.98.22-3.3-.69-2.79-1.1-4.58-3.94-4.72-4.13-.14-.19-1.12-1.49-1.12-2.84s.71-2.02.96-2.3c.24-.27.53-.34.71-.34l.5.01c.16.01.38-.06.6.45.24.56.8 1.94.87 2.08.07.14.11.3.02.49-.09.19-.14.3-.27.46-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.27.14.43.12.59-.07.16-.19.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.26.13.43.19.5.3.07.11.07.63-.17 1.31Z"/></svg>
-          Cotizar por WhatsApp
-        </a>
+        <a class="servicio-link" href="https://wa.me/526861383117?text=Hola%2C%20me%20interesa%20cotizar%20el%20servicio%20de%20Reparaciones%20de%20Concreto." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.03c-.24.68-1.4 1.31-1.93 1.34-.5.03-.98.22-3.3-.69-2.79-1.1-4.58-3.94-4.72-4.13-.14-.19-1.12-1.49-1.12-2.84s.71-2.02.96-2.3c.24-.27.53-.34.71-.34l.5.01c.16.01.38-.06.6.45.24.56.8 1.94.87 2.08.07.14.11.3.02.49-.09.19-.14.3-.27.46-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.27.14.43.12.59-.07.16-.19.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.26.13.43.19.5.3.07.11.07.63-.17 1.31Z"/></svg>Cotizar este servicio →</a>
       </div>
       <div class="servicio-card">
         <h3>Impermeabilizaciones</h3>
         <p>Reparación y sellado de techos y láminas en naves industriales, protección contra filtraciones.</p>
-        <a class="btn btn-wa" href="https://wa.me/526861383117?text=Hola%2C%20me%20interesa%20cotizar%20el%20servicio%20de%20Impermeabilizaciones." target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px;"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.03c-.24.68-1.4 1.31-1.93 1.34-.5.03-.98.22-3.3-.69-2.79-1.1-4.58-3.94-4.72-4.13-.14-.19-1.12-1.49-1.12-2.84s.71-2.02.96-2.3c.24-.27.53-.34.71-.34l.5.01c.16.01.38-.06.6.45.24.56.8 1.94.87 2.08.07.14.11.3.02.49-.09.19-.14.3-.27.46-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.27.14.43.12.59-.07.16-.19.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.26.13.43.19.5.3.07.11.07.63-.17 1.31Z"/></svg>
-          Cotizar por WhatsApp
-        </a>
+        <a class="servicio-link" href="https://wa.me/526861383117?text=Hola%2C%20me%20interesa%20cotizar%20el%20servicio%20de%20Impermeabilizaciones." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.03c-.24.68-1.4 1.31-1.93 1.34-.5.03-.98.22-3.3-.69-2.79-1.1-4.58-3.94-4.72-4.13-.14-.19-1.12-1.49-1.12-2.84s.71-2.02.96-2.3c.24-.27.53-.34.71-.34l.5.01c.16.01.38-.06.6.45.24.56.8 1.94.87 2.08.07.14.11.3.02.49-.09.19-.14.3-.27.46-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.27.14.43.12.59-.07.16-.19.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.26.13.43.19.5.3.07.11.07.63-.17 1.31Z"/></svg>Cotizar este servicio →</a>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA FINAL ══ -->
+<section class="cta-final">
+  <div class="container">
+    <h2>¿No encuentras el servicio que buscas?</h2>
+    <p>Escríbenos y te ayudamos a identificar la solución correcta para tu planta.</p>
+    <div class="cta-final-actions">
+      <a class="btn btn-wa" href="https://wa.me/526861383117?text=Hola%2C%20tengo%20una%20duda%20sobre%20qu%C3%A9%20servicio%20de%20recubrimiento%20necesito%20para%20mi%20planta." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px;"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.03c-.24.68-1.4 1.31-1.93 1.34-.5.03-.98.22-3.3-.69-2.79-1.1-4.58-3.94-4.72-4.13-.14-.19-1.12-1.49-1.12-2.84s.71-2.02.96-2.3c.24-.27.53-.34.71-.34l.5.01c.16.01.38-.06.6.45.24.56.8 1.94.87 2.08.07.14.11.3.02.49-.09.19-.14.3-.27.46-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.27.14.43.12.59-.07.16-.19.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.26.13.43.19.5.3.07.11.07.63-.17 1.31Z"/></svg>
+        Hablar por WhatsApp
+      </a>
     </div>
   </div>
 </section>
